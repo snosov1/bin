@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ $# -le 1 ]] ; then echo "Please, provide the remote host name" ; exit 1 ; fi
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+# prepend .profile
+cat .profile | ssh $1 'cp .profile .profile.sergei.bak && cat - .profile >.profile.sergei.emacs.dired && cp .profile.sergei.emacs.dired .profile'
